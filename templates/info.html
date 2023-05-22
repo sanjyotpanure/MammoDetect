@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>About Breast Cancer</title>
+    <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
+    <link href="static/styles.css" rel="stylesheet" />
+    <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
+</head>
+
+<body class="sb-nav-fixed">
+    <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
+        <!-- Navbar Brand-->
+        <a class="navbar-brand ps-3" href="{{ url_for('index') }}">MammoDetect</a>
+        <!-- Sidebar Toggle-->
+        <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i
+                class="fas fa-bars"></i></button>
+        <!-- Navbar Search-->
+        <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
+            <div class="input-group">
+                <input class="form-control" type="text" placeholder="Search for..." aria-label="Search for..."
+                    aria-describedby="btnNavbarSearch" />
+                <button class="btn btn-primary" id="btnNavbarSearch" type="button"><i
+                        class="fas fa-search"></i></button>
+            </div>
+        </form>
+        <!-- Navbar-->
+        <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown"
+                    aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
+                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                    <li><a class="dropdown-item" href="#!">Settings</a></li>
+                    <li><a class="dropdown-item" href="#!">Activity Log</a></li>
+                    <li>
+                        <hr class="dropdown-divider" />
+                    </li>
+                    <li><a class="dropdown-item" href="#!">Logout</a></li>
+                </ul>
+            </li>
+        </ul>
+    </nav>
+    <div id="layoutSidenav">
+        <div id="layoutSidenav_nav">
+            <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
+                <div class="sb-sidenav-menu">
+                    <div class="nav">
+                        <div class="sb-sidenav-menu-heading">Core</div>
+                        <a class="nav-link" href="{{ url_for('index') }}">
+                            <div class="sb-nav-link-icon"><i class="fas fa-microscope-alt"></i></div>
+                            Detect Cancer
+                        </a>
+                        <a class="nav-link" href="{{ url_for('info') }}">
+                            <div class="sb-nav-link-icon"><i class="fas fa-ribbon"></i></div>
+                            About Breast Cancer
+                        </a>
+                    </div>
+                </div>
+                <div class="sb-sidenav-footer">
+                </div>
+            </nav>
+        </div>
+        <div id="layoutSidenav_content">
+            <main>
+                <div class="container-fluid px-4">
+                    <h1 class="mt-4">Breast Cancer</h1>
+                    <ol class="breadcrumb mb-4">
+                        <li class="breadcrumb-item"><a href="{{ url_for('index') }}">Home</a></li>
+                        <li class="breadcrumb-item active">Breast Cancer</li>
+                    </ol>
+                    <div class="row">
+                        <div class="col-lg-9 px-5">
+                            <div id="introduction">
+                                <section>
+                                    <h2>Introduction</h2>
+                                    <p>Breast cancer is a type of cancer that develops in the breast tissue. It occurs when
+                                        abnormal cells in the breast grow out of control and form a tumor. Breast cancer is
+                                        the most common cancer in women worldwide, but it can also occur in men.</p>
+                                    <p>It is a complex disease that can vary in severity and type. There are several different types of breast cancer, including ductal carcinoma, lobular carcinoma, and inflammatory breast cancer. Each type of breast cancer may require different treatments, and the prognosis can vary depending on the stage of the cancer.</p>
+                                    <p>Breast cancer awareness campaigns aim to educate people about the signs and symptoms
+                                        of breast cancer, as well as the importance of regular screening and
+                                        self-examination. By raising awareness, we can encourage people to take action and
+                                        seek medical attention if they notice any changes in their breast tissue.</p>
+                                    <p>Overall, breast cancer is a serious health issue that requires attention and action. By learning more about breast cancer, staying informed about the latest research and guidelines, and taking steps to reduce your risk, you can help protect your breast health and ensure the best possible outcomes.</p>
+                                    <p>In this article, we will explore the causes, risk factors, symptoms, diagnosis,
+                                        treatment options, coping strategies, prevention, and screening for breast cancer.
+                                    </p>
+                                </section>
+                            </div>
+
+                            <div id="causes-and-risk-factors">
+                                <section>
+                                    <h2>Causes and Risk Factors</h2>
+                                    <p>There are several factors that can increase a person's risk of developing breast cancer:</p>
+                                    <ul>
+                                        <li><b> Genetic factors:</b> Inherited mutations in certain genes, such as BRCA1 and BRCA2, can increase the risk of breast cancer. Women who have a family history of breast cancer are also at higher risk, particularly if the cancer occurred in a first-degree relative (mother, sister, or daughter).</li>
+                                        <li><b> Hormonal factors:</b> Estrogen and progesterone are hormones that can stimulate the growth of breast cancer cells. Women who have started menstruating at an early age, experienced menopause at a late age, or have never been pregnant are at higher risk of developing breast cancer due to the increased exposure to these hormones.</li>
+                                        <li><b> Lifestyle factors:</b> Studies have shown that a diet high in saturated fats and low in fruits and vegetables may increase the risk of breast cancer. Lack of physical activity may also increase the risk. Additionally, women who consume alcohol regularly are at higher risk of developing breast cancer.</li>
+                                        <li><b> Age and gender:</b> Breast cancer is more common in women than men. The risk of breast cancer increases as women age, particularly after menopause.</li>
+                                    </ul>
+                                    <p>It's important to note that having one or more risk factors doesn't necessarily mean that a person will develop breast cancer. Similarly, not having any risk factors doesn't mean that a person is completely immune to the disease. Breast cancer can occur in anyone, regardless of their risk factors. That's why regular screening and early detection are so important for everyone, regardless of their individual risk profile.</p>
+                                </section>
+                            </div>
+
+                            <div id="signs-and-symptoms">
+                                <section >
+                                    <h2>Signs and Symptoms</h2>
+                                    <p>The following are common signs and symptoms of breast cancer:</p>
+                                    <ul>
+                                        <li>Lump or thickening in the breast or underarm</li>
+                                        <li>Changes in breast shape or size</li>
+                                        <li>Nipple discharge or inversion</li>
+                                        <li>Skin changes on the breast (e.g., dimpling, redness, or swelling)</li>
+                                    </ul>
+                                </section>
+                            </div>
+
+                            <div id="diagnosis">
+                                <section>
+                                    <h2>Diagnosis</h2>
+                                    <p>Breast cancer is typically diagnosed using one or more of the following methods:</p>
+                                    <h5><b>1. Mammogram and other imaging tests:</b></h5>
+                                        <ul>
+                                            <li><b> Physical examination:</b> A doctor will examine the breasts and underarms for any lumps or other abnormalities.</li>
+                                            <li><b> Mammogram:</b> A mammogram is an X-ray of the breast that can detect abnormalities, such as lumps or calcifications, which may indicate the presence of breast cancer. Mammograms are typically recommended for women starting at a certain age, usually around 40 or 50, depending on individual risk factors.</li>
+                                            <li><b> Ultrasound:</b> Ultrasound uses sound waves to create images of the breast tissue. It is often used to further evaluate suspicious findings from a mammogram or to differentiate between solid masses and fluid-filled cysts.</li>
+                                            <li><b> MRI (Magnetic Resonance Imaging):</b> MRI can provide more detailed images of the breast and is sometimes used in addition to mammography for high-risk individuals or to assess the extent of cancer.</li>
+                                        </ul>
+                                    <h5><b>2. Biopsy:</b></h5>
+                                        <ul>
+                                            <li>If a suspicious area is found during imaging tests, a biopsy is performed to obtain a tissue sample for further examination.</li>
+                                            <li>There are different types of biopsies, including:
+                                                <ol><b> Fine-needle aspiration biopsy:</b> A thin needle is used to remove a small sample of cells from the breast.</ol>
+                                                <ol><b> Core needle biopsy:</b> A slightly larger needle is used to remove small cylinders of tissue from the breast.</ol>
+                                                <ol><b> Surgical biopsy:</b> A surgical procedure is performed to remove a larger sample of tissue from the breast.</ol>
+                                            </li>   
+                                        </ul> 
+                                    <h5><b>3. Genetic testing:</b></h5>
+                                        <ul>                            
+                                            <li>Genetic testing is recommended for individuals who have a family history of breast cancer or certain genetic mutations.</li>
+                                            <li>It involves analyzing a blood or saliva sample to identify specific gene mutations, such as BRCA1 and BRCA2.</li>
+                                            <li>Genetic testing can help determine if a person has an increased risk of developing breast cancer and guide treatment decisions.</li>
+                                        </ul>
+                                </section> 
+                            </div> 
+
+                            <div id="treatment-options">
+                                <section>
+                                    <h2>Treatment Options</h2>
+                                    <p>Breast cancer is typically diagnosed using one or more of the following methods:</p>
+                                    <h5><b>1. Surgery:</b></h5>
+                                        <ul>
+                                            <li>Surgery is a common treatment option for breast cancer and involves removing the tumor and surrounding tissue.</li>
+                                            <li><b> Lumpectomy:</b> Also known as breast-conserving surgery, this procedure removes the tumor while preserving the breast.</li>
+                                            <li><b> Mastectomy:</b> In a mastectomy, the entire breast is surgically removed. This may include removal of the nipple and areola as well.</li>
+                                            <li><b> Lymph node surgery:</b> If cancer has spread to the nearby lymph nodes, they may also be removed during surgery.</li>
+                                        </ul>
+                                    <h5><b>2. Radiation Therapy:</b></h5>
+                                        <ul>
+                                            <li>Radiation therapy uses high-energy beams to destroy cancer cells and reduce the risk of recurrence.</li>
+                                            <li>It is often used after surgery to target any remaining cancer cells in the breast or lymph nodes.</li>
+                                            <li>External beam radiation and brachytherapy (internal radiation) are two common types of radiation therapy.</li>
+                                        </ul> 
+                                    <h5><b>3. Chemotherapy:</b></h5>
+                                        <ul>                            
+                                            <li>Chemotherapy uses drugs to kill cancer cells throughout the body.</li>
+                                            <li>It can be administered before surgery to shrink tumors, after surgery to eliminate remaining cancer cells, or in cases of advanced or metastatic breast cancer.</li>
+                                            <li>Chemotherapy may have side effects, such as hair loss, nausea, and fatigue, but these can often be managed with supportive care.</li>
+                                        </ul>
+                                    <h5><b>4. Hormone Therapy:</b></h5>
+                                        <ul>                            
+                                            <li>Hormone therapy is used for breast cancers that are hormone receptor-positive.</li>
+                                            <li>It works by blocking the effects of hormones, such as estrogen or progesterone, or by reducing hormone production in the body.</li>
+                                            <li>Hormone therapy can be administered orally or through injections, and it is often used for a number of years to reduce the risk of recurrence.</li>
+                                        </ul>
+                                        <p>It's important to note that the specific treatment plan for breast cancer will depend on various factors, such as the stage of the cancer, tumor characteristics, and individual patient preferences. The treatment options mentioned above are commonly used, but the actual treatment plan should be determined by a healthcare professional specializing in breast cancer care.</p>
+                                </section>
+                            </div>
+                        </div>
+                        <div class="col-lg-3">
+                            <div class="card position-fixed">
+                                <div class="card-header">
+                                    <h4 class="mt-4">Contents</h4>
+                                </div>
+                                <div class="card-body">
+                                    <nav class="nav flex-column">
+                                        <a class="nav-link" href="javascript:void(0);" onclick="scrollToSection('introduction')">Introduction</a>
+                                        <a class="nav-link" href="javascript:void(0);" onclick="scrollToSection('causes-and-risk-factors')">Causes and Risk Factors</a>
+                                        <a class="nav-link" href="javascript:void(0);" onclick="scrollToSection('signs-and-symptoms')">Signs and Symptoms</a>
+                                        <a class="nav-link" href="javascript:void(0);" onclick="scrollToSection('diagnosis')">Diagnosis</a>
+                                        <a class="nav-link" href="javascript:void(0);" onclick="scrollToSection('stages-of-breast-cancer')">Stages of Breast Cancer</a>
+                                        <a class="nav-link" href="javascript:void(0);" onclick="scrollToSection('treatment-options')">Treatment Options</a>
+                                        <a class="nav-link" href="javascript:void(0);" onclick="scrollToSection('coping-with-breast-cancer')">Coping with Breast Cancer</a>
+                                        <a class="nav-link" href="javascript:void(0);" onclick="scrollToSection('prevention-and-screening')">Prevention and Screening</a>
+                                        <a class="nav-link" href="javascript:void(0);" onclick="scrollToSection('conclusion')">Conclusion</a>
+                                    </nav>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>           
+
+            <footer class="py-3 bg-light mt-auto">
+                <div class="container-fluid px-4">
+                    <div class="d-flex align-items-center justify-content-center small">
+                        <div class="text-muted">Copyright &copy;   Website 2023</div>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        crossorigin="anonymous"></script>
+    <script src="../static/scripts.js"></script>
+    <script>
+        function scrollToSection(sectionId) {
+            const section = document.getElementById(sectionId);
+            if (section) {
+                const offset = 80; // Adjust the offset value as needed
+                const sectionPosition = section.offsetTop - offset;
+                window.scrollTo({
+                    top: sectionPosition,
+                    behavior: 'smooth'
+                });
+            }
+        }
+    </script>
+</body>
+
+</html>
