@@ -1,5 +1,4 @@
 from flask import Flask, render_template, request
-from flask_ngrok import run_with_ngrok
 from PIL import Image
 from io import BytesIO
 import numpy as np
@@ -15,7 +14,6 @@ import os
 import traceback
 
 app = Flask(__name__)
-run_with_ngrok(app)
 model = tf.keras.models.load_model('model/model.h5')
 class_name = ['Benign with Density: 1', 'Malignant with Density: 1', 'Benign with Density: 2', 'Malignant with Density: 2',
               'Benign with Density: 3', 'Malignant with Density: 3', 'Benign with Density: 4', 'Malignant with Density: 4']
@@ -117,6 +115,7 @@ def predict():
     except FileNotFoundError:
         return render_template('index.html', message='Model not found.')
     except Exception as e:
-        traceback.print_exc()  # Print the traceback of the exception
         return render_template('index.html', message='Uploaded image is not in correct format! Please upload valid image.')
 
+if __name__ == '__main__':
+    app.run(debug=True)
