@@ -7,6 +7,8 @@
         <meta name="description" content="" />
         <meta name="author" content="" />
         <title>Classification Result</title>
+        <!-- Favicon -->
+        <link rel="icon" type="image/png" href="{{ url_for('static', filename='img/favicon.png') }}">
         <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
         <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
         <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
@@ -24,9 +26,11 @@
         </style>
     </head>
     <body class="sb-nav-fixed">
-        <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
+        <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark" style="height: 60px;">
             <!-- Navbar Brand-->
-            <a class="navbar-brand ps-3" href="{{ url_for('index') }}">MammoDetect</a>
+            <a class="navbar-brand ps-3" href="/">
+                <img src="{{ url_for('static', filename='img/logo.png') }}" style="height: 40px;" alt="MammoDetect Logo" class="site-logo">
+            </a>
             <!-- Sidebar Toggle-->
             <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
             <!-- Navbar Search-->
@@ -38,14 +42,8 @@
             </form>
             <!-- Navbar-->
             <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
-                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="#!">Settings</a></li>
-                        <li><a class="dropdown-item" href="#!">Activity Log</a></li>
-                        <li><hr class="dropdown-divider" /></li>
-                        <li><a class="dropdown-item" href="#!">Logout</a></li>
-                    </ul>
+                <li class="nav-item">
+                    <a class="nav-link" href="#" role="button" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
                 </li>
             </ul>
         </nav>
@@ -54,15 +52,19 @@
                 <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
                     <div class="sb-sidenav-menu">
                         <div class="nav">
-                            <div class="sb-sidenav-menu-heading">Core</div>
+                            <div class="sb-sidenav-menu-heading">Explore</div>
                             <a class="nav-link" href="{{ url_for('index') }}">
-                                <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                                <div class="sb-nav-link-icon"><i class="fas fa-search"></i></div>
                                 Detect Cancer
                             </a>
                             <a class="nav-link" href="{{ url_for('info') }}">
-                                <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
+                                <div class="sb-nav-link-icon"><i class="fas fa-ribbon"></i></div>
                                 About Breast Cancer
                             </a>
+                            <a class="nav-link" href="{{ url_for('about') }}">
+                                <div class="sb-nav-link-icon"><img src="{{ url_for('static', filename='img/favicon.png') }}" style="height: 15px;" class="site-logo" alt="Logo Icon"></div>
+                                About MammoDetect
+                            </a>  
                         </div>
                     </div>
                 </nav>
@@ -112,13 +114,20 @@
                                           </div>
                                         {% endfor %}
                                         {% if message %}
-                                          <h5>{{ message }}</h5>
+                                          <h5 class="justify-content-center mt-4 text-center">{{ message }}</h5>
                                         {% endif %}                    
                                         {% if report_filename %}
                                             <h2>Report:</h2>
                                             <a href="{{ url_for('download_report', filename=report_filename) }}">Download Report</a>
                                         {% endif %}                    
-                                    </div>  
+                                    </div> 
+                                    <div class="justify-content-center mb-4 text-center">
+                                        <a href="/" class="btn btn-success">
+                                            <i class="fas fa-search me-1"></i>
+                                            Make another Classification
+                                        </a>
+                                    </div> 
+                                    
                                     <div id="update-time" class="card-footer small text-muted"></div>                   
                                 </div>
                             {% endblock %}
@@ -128,16 +137,20 @@
                 </main>
                 <footer class="py-4 bg-light mt-auto">
                     <div class="container-fluid px-4">
-                        <div class="d-flex align-items-center justify-content-between small">
-                            <div class="text-muted">Copyright &copy; MammoDetect 2023</div>
-                        </div>
+                        <div class="d-flex align-items-center justify-content-center small">
+                            <div class="text-muted"> Copyright
+                                <a class="navbar-brand ps-3" href="/">
+                                    <img src="{{ url_for('static', filename='img/logoBlack.png') }}" style="height: 20px;" alt="MammoDetect Logo" class="site-logo">
+                                </a>
+                                <span>&copy; 2023</span>
+                            </div>
+                        </div>                        
                     </div>
                 </footer>
             </div>
         </div>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
-        <script src="../static/scripts.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
+        <script src="{{ url_for('static', filename='scripts.js') }}"></script>
         <script>
             function updateTime() {
               var now = new Date();

@@ -84,4 +84,7 @@ Prediction Results and Visualization
 7. Werkzeug: A utility library that provides secure file uploading and other web-related functions.
 
 ## About
-The MammoDetect is an innovative project that aims to leverage the power of artificial intelligence and image analysis techniques to assist healthcare professionals in the early detection and diagnosis of breast cancer. By providing accurate predictions and insightful visualizations, this application empowers medical experts and contributes to improved patient care.
+The **MammoDetect** is an innovative project that aims to leverage the power of artificial intelligence and image analysis techniques to assist healthcare professionals in the early detection and diagnosis of breast cancer. By providing accurate predictions and insightful visualizations, this application empowers medical experts and contributes to improved patient care.
+
+## License
+This project is licensed under the [MIT License](https://github.com/sanjyotpanure/MammoDetect/blob/master/LICENSE).
