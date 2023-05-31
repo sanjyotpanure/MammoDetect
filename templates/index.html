@@ -6,16 +6,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="description" content="" />
     <meta name="author" content="" />
-    <title>Cancer Image Classification</title>
+    <title>MammoDetect</title>
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='img/favicon.png') }}">
     <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
     <link href="static/styles.css" rel="stylesheet" />
     <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
 </head>
 <body>
-    <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
+    <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark" style="height: 60px;">
         <!-- Navbar Brand-->
-        <a class="navbar-brand ps-3" href="/">MammoDetect</a>
+        <a class="navbar-brand ps-3" href="/">
+          <img src="{{ url_for('static', filename='img/logo.png') }}" style="height: 40px;" alt="MammoDetect Logo" class="site-logo">
+        </a>
         <!-- Sidebar Toggle-->
         <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
         <!-- Navbar Search-->
@@ -24,17 +28,11 @@
                 <input class="form-control" type="text" placeholder="Search for..." aria-label="Search for..." aria-describedby="btnNavbarSearch" />
                 <button class="btn btn-primary" id="btnNavbarSearch" type="button"><i class="fas fa-search"></i></button>
             </div>
-        </form>
+        </form>        
         <!-- Navbar-->
         <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
-                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                    <li><a class="dropdown-item" href="#!">Settings</a></li>
-                    <li><a class="dropdown-item" href="#!">Activity Log</a></li>
-                    <li><hr class="dropdown-divider" /></li>
-                    <li><a class="dropdown-item" href="#!">Logout</a></li>
-                </ul>
+            <li class="nav-item">
+                <a class="nav-link"  href="#" role="button" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
             </li>
         </ul>
     </nav>
@@ -43,15 +41,19 @@
             <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
                 <div class="sb-sidenav-menu">
                     <div class="nav">
-                        <div class="sb-sidenav-menu-heading">Core</div>
+                        <div class="sb-sidenav-menu-heading">Explore</div>
                         <a class="nav-link" href="{{ url_for('index') }}">
-                            <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                            <div class="sb-nav-link-icon"><i class="fas fa-search"></i></div>
                             Detect Cancer
                         </a>
                         <a class="nav-link" href="{{ url_for('info') }}">
-                            <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
+                            <div class="sb-nav-link-icon"><i class="fas fa-ribbon"></i></div>
                             About Breast Cancer
                         </a>
+                        <a class="nav-link" href="{{ url_for('about') }}">
+                          <div class="sb-nav-link-icon"><img src="{{ url_for('static', filename='img/favicon.png') }}" style="height: 15px;" class="site-logo" alt="Logo Icon"></div>
+                          About MammoDetect
+                        </a>                      
                     </div>
                 </div>
                 <div class="sb-sidenav-footer">
@@ -63,13 +65,29 @@
         <div id="layoutSidenav_content">
             <main>
                 <div class="container-fluid px-4">
-                  <h1 class="mt-4">Breast Cancer Density Classification</h1>
+                  <div class="container">
+                    <div class="row">
+                      <div class="col-lg-9 col-md-6 order-2 order-md-1">
+                        <h1 class="mt-4">Breast Cancer Density Classification</h1>
+                      </div>
+                      <div class="col-lg-3 col-md-6 order-1 order-md-2 d-flex align-items-center justify-content-end mt-3">
+                        <img src="{{ url_for('static', filename='img/logoBlack.png') }}" style="width: 350px;" alt="Logo" class="logo-image">
+                      </div>
+                    </div>
+                  </div>                                
                   <ol class="breadcrumb mb-4">
                     <li class="breadcrumb-item"><a href="/">Home</a></li>
-                    <li class="breadcrumb-item active">Cancer Image Classification</li>
+                    <li class="breadcrumb-item active">Breast Cancer Detection</li>
                   </ol>
                   <div class="card mb-4">
                     <div class="card-body">
+                      {% if message %}
+                      <div id="alert-message" class="alert alert-warning alert-dismissible fade show" role="alert">
+                        <span id="alert-content">{{ message }}</span>
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                      </div>
+                      {% endif %}
+                                                         
                       <form method="POST" action="{{ url_for('predict') }}" enctype="multipart/form-data">
                         <div class="mb-3">
                           <label for="image-upload" class="form-label">Select an image of a skin lesion to classify:</label>
@@ -89,23 +107,51 @@
                     </div>
                   </div>
                   {% endif %}
+
+                  <!-- Educational Resources Section -->
+                  <div class="card mb-4">
+                    <div class="card-header">
+                      <h3> Resources </h3>
+                    </div>
+                    <div class="card-body">
+                      Explore educational resources and articles about breast cancer:
+                      <ul>
+                        <li><a href="https://www.cancer.org/cancer/breast-cancer.html">American Cancer Society - Breast Cancer</a></li>
+                        <li><a href="https://www.breastcancer.org/">Breastcancer.org</a></li>
+                        <li><a href="https://www.cdc.gov/cancer/breast/index.htm">CDC - Breast Cancer</a></li>
+                        <li>Visit our page - <a href="{{ url_for('info') }}">About Breast Cancer</a></li>
+                        <!-- Add more relevant links as needed -->
+                      </ul>
+                    </div>
+                  </div>
                 </div>
             </main>
             <footer class="py-4 bg-light mt-auto">
                 <div class="container-fluid px-4">
-                    <div class="d-flex align-items-center justify-content-between small">
-                        <div class="text-muted">Copyright &copy; MammoDetect 2023</div>
+                  <div class="d-flex align-items-center justify-content-center small">
+                    <div class="text-muted"> Copyright
+                        <a class="navbar-brand ps-3" href="/">
+                            <img src="{{ url_for('static', filename='img/logoBlack.png') }}" style="height: 20px;" alt="MammoDetect Logo" class="site-logo">
+                        </a>
+                        <span>&copy; 2023</span>
                     </div>
+                  </div>                
                 </div>
             </footer>
         </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
-    <script src="../static/scripts.js"></script>
+    <script src="{{ url_for('static', filename='scripts.js') }}"></script>         
     <script>
-      {% if message %}
-        alert("{{ message }}");
-      {% endif %}
-    </script>
+      document.addEventListener('DOMContentLoaded', function() {
+          var alertMessage = document.getElementById('alert-message');
+          if (alertMessage) {
+              var closeButton = alertMessage.querySelector('.btn-close');
+              closeButton.addEventListener('click', function() {
+                  alertMessage.classList.remove('show');
+              });
+          }
+      });
+    </script> 
 </body>
 </html>

@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>About MammoDetect</title>
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='img/favicon.png') }}">
+    <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
+    <link href="static/styles.css" rel="stylesheet" />
+    <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
+</head>
+
+<body class="sb-nav-fixed">
+    <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark" style="height: 60px;">
+        <!-- Navbar Brand-->
+        <a class="navbar-brand ps-3" href="/">
+            <img src="{{ url_for('static', filename='img/logo.png') }}" style="height: 40px;" alt="MammoDetect Logo" class="site-logo">
+        </a>
+        <!-- Sidebar Toggle-->
+        <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i
+                class="fas fa-bars"></i></button>
+        <!-- Navbar Search-->
+        <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
+            <div class="input-group">
+                <input class="form-control" type="text" placeholder="Search for..." id="searchInput" aria-label="Search for..."
+                    aria-describedby="btnNavbarSearch" />
+                <button class="btn btn-primary" id="btnNavbarSearch" type="button" onclick="searchText()"><i class="fas fa-search"></i></button>
+            </div>
+        </form>        
+        <!-- Navbar-->
+        <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
+            <li class="nav-item">
+                <a class="nav-link" href="#" role="button"
+                    aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
+            </li>
+        </ul>
+    </nav>
+    <div id="layoutSidenav">
+        <div id="layoutSidenav_nav">
+            <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
+                <div class="sb-sidenav-menu">
+                    <div class="nav">
+                        <div class="sb-sidenav-menu-heading">Explore</div>
+                        <a class="nav-link" href="{{ url_for('index') }}">
+                            <div class="sb-nav-link-icon"><i class="fas fa-search"></i></div>
+                            Detect Cancer
+                        </a>
+                        <a class="nav-link" href="{{ url_for('info') }}">
+                            <div class="sb-nav-link-icon"><i class="fas fa-ribbon"></i></div>
+                            About Breast Cancer
+                        </a>
+                        <a class="nav-link" href="{{ url_for('about') }}">
+                            <div class="sb-nav-link-icon"><img src="{{ url_for('static', filename='img/favicon.png') }}" style="height: 15px;" class="site-logo" alt="Logo Icon"></div>
+                            About MammoDetect
+                        </a>  
+                    </div>
+                </div>
+                <div class="sb-sidenav-footer">
+                </div>
+            </nav>
+        </div>
+        <div id="layoutSidenav_content">
+            <main>
+                <div class="container-fluid px-4">
+                    <div class="d-flex align-items-center justify-content-center mt-4">
+                        <img src="{{ url_for('static', filename='img/logoBlack.png') }}"style="width: 350px;" alt="Logo" class="logo-image">
+                      </div>   
+                    <ol class="breadcrumb mb-4">
+                        <li class="breadcrumb-item"><a href="{{ url_for('index') }}">Home</a></li>
+                        <li class="breadcrumb-item active">About project</li>
+                    </ol>
+                    <div class="container">
+                        <div class="about-content">
+                            <h2>MammoDetect - Early Breast Cancer Detection</h2>
+                            <p>Welcome to the <strong>MammoDetect</strong>, a cutting-edge web application that harnesses the power of deep learning to analyze mammogram images and predict the presence of breast cancer. With an intuitive user interface and advanced image processing techniques, this application aims to assist in the early detection of breast cancer and improve patient outcomes.</p>
+                            <h2>Key Features</h2>
+                            <ul>
+                                <li><strong>Upload Mammogram Images:</strong> Easily upload your mammogram images through a user-friendly interface. The application supports JPEG image formats.</li>
+                                <li><strong>Real-Time Predictions:</strong> The deep learning model integrated into the application provides real-time predictions on the uploaded mammogram images, ensuring quick and efficient results.</li>
+                                <li><strong>Visualize Cancerous Areas:</strong> The application generates visualizations that highlight the cancerous areas within the mammogram images, assisting healthcare professionals in their analysis.</li>
+                                <li><strong>Risk Assessment:</strong> Based on the prediction results, the application provides an assessment of the risk level associated with breast cancer, enabling informed decision-making and personalized patient care.</li>
+                                <li><strong>Interactive Results:</strong> The application displays comprehensive prediction results, including the probability scores for different types of breast cancer, allowing for detailed analysis and interpretation.</li>
+                                <li><strong>Secure and Private:</strong> The application prioritizes data privacy and security. Uploaded images are processed securely, and user data is handled with utmost confidentiality.</li>
+                            </ul>
+                            <h2>How to Use</h2>
+                            <ol>
+                                <li>Access the application through your preferred web browser.</li>
+                                <li>Click on the "Choose File" button to upload a mammogram image from your local device.</li>
+                                <li>Once the image is uploaded, click on the "Upload and Classify" button to initiate the breast cancer prediction process.</li>
+                                <li>The application will process the image using advanced deep learning techniques and display the prediction results in real-time.</li>
+                                <li>Explore the visualization of cancerous areas within the image, along with a comprehensive assessment of the risk associated with breast cancer.</li>
+                                <li>Use the provided information to guide further medical analysis and decision-making processes.</li>
+                            </ol>
+
+                            <h2>Technologies Used</h2>
+                            <ol>
+                                <li>Flask: A lightweight web framework used for handling HTTP requests and rendering dynamic HTML templates.</li>
+                                <li>TensorFlow: The popular deep learning framework used for training and deploying the breast cancer prediction model.</li>
+                                <li>PIL (Python Imaging Library): A library for image processing tasks, such as opening, manipulating, and saving images.</li>
+                                <li>NumPy: A fundamental package for scientific computing with Python, utilized for array manipulation and mathematical operations.</li>
+                                <li>scikit-image: A collection of algorithms for image processing and analysis, enabling advanced image segmentation and labeling.</li>
+                                <li>matplotlib: A plotting library used to generate visualizations of the mammogram images and cancerous regions.</li>
+                                <li>Werkzeug: A utility library that provides secure file uploading and other web-related functions.</li>
+                            </ol>
+                            <h2>About</h2>
+                            <p>The MammoDetect is an innovative project that aims to leverage the power of artificial intelligence and image analysis techniques to assist healthcare professionals in the early detection and diagnosis of breast cancer. By providing accurate predictions and insightful visualizations, this application empowers medical experts and contributes to improved patient care.</p>
+                            
+                            <h2>Model Summary</h2>
+                            <p>The model developed for early breast cancer detection achieved an impressive accuracy of 95%. This performance surpasses other popular models such as VGG19 with an accuracy of 93%, ResNet50 with 87% accuracy, and MobileNet with 65% accuracy.</p>
+                            <div class="container-fluid px-4">
+                                <div class="d-flex align-items-center justify-content-center m-4">
+                                  <img src="{{ url_for('static', filename='img/chart.PNG') }}"style="width: 500px;" alt="chart">
+                                </div>
+                            </div>
+                            <p>The chosen model architecture for this task was DenseNet201, a deep convolutional neural network. It utilizes a pre-trained DenseNet201 model with ImageNet weights as the base, excluding the top layers. The model employs max pooling for downsampling and global max pooling to obtain a fixed-size feature vector. The weights of the convolutional layers in the base model were fine-tuned during training.</p>
+                            <p>During the training process, a batch size of 32 was used, and the Adam optimizer was employed with a learning rate of 0.00001 and a decay of 0.0001. The model was trained using the categorical crossentropy loss function with label smoothing of 0.1. Several callback functions were utilized, including ModelCheckpoint to save the best model based on validation accuracy, EarlyStopping to halt training if validation loss does not improve for a specified number of epochs, and ReduceLROnPlateau to reduce the learning rate if the validation loss plateaus.</p>
+                            <p>The training was performed on a training set with a total of 5724 images. After training for 30 epochs, the model was evaluated on a separate test set with a total of 1980 images, resulting in an impressive accuracy of 95%.</p>
+                            <p>In conclusion, the developed model for early breast cancer detection utilizing DenseNet201 has outperformed other well-known architectures such as VGG19, ResNet50, and MobileNet, achieving a remarkable accuracy of 95%. This suggests that the model has learned discriminative features and can effectively distinguish between benign and malignant breast tissue, making it a promising tool for early breast cancer detection.</p>
+                        </div>
+                    </div>
+                </div>
+            </main>           
+
+            <footer class="py-3 bg-light mt-auto">
+                <div class="container-fluid px-4">
+                    <div class="d-flex align-items-center justify-content-center small">
+                        <div class="text-muted"> Copyright
+                            <a class="navbar-brand ps-3" href="/">
+                                <img src="{{ url_for('static', filename='img/logoBlack.png') }}" style="height: 20px;" alt="MammoDetect Logo" class="site-logo">
+                            </a>
+                            <span>&copy; 2023</span>
+                        </div>
+                    </div>                    
+                </div>
+            </footer>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        crossorigin="anonymous"></script>
+    <script src="{{ url_for('static', filename='scripts.js') }}"></script>
+    <script>
+        function searchText() {
+            var input = document.getElementById("searchInput");
+            var filter = input.value.toUpperCase();
+
+            // Get all the elements where you want to perform the search
+            var elements = document.getElementsByClassName("searchable");
+
+            // Loop through the elements and hide/show based on the search query
+            for (var i = 0; i < elements.length; i++) {
+                var text = elements[i].textContent || elements[i].innerText;
+                if (text.toUpperCase().indexOf(filter) > -1) {
+                    elements[i].style.display = "";
+                } else {
+                    elements[i].style.display = "none";
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>

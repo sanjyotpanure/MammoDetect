@@ -9,9 +9,7 @@ import matplotlib
 matplotlib.use('agg')
 import matplotlib.pyplot as plt
 from werkzeug.utils import secure_filename
-import uuid
-import os
-import traceback
+import os 
 
 app = Flask(__name__)
 model = tf.keras.models.load_model('model/model.h5')
@@ -69,6 +67,14 @@ def index():
 def info ():  
     return render_template("info.html") 
 
+@app.route('/about')  
+def about ():  
+    return render_template("about.html") 
+
+@app.errorhandler(404)
+def page_not_found(e):
+    return render_template('error.html')
+
 @app.route('/predict', methods=['POST'])
 def predict():
     try:
@@ -77,20 +83,25 @@ def predict():
         # Check if a file is uploaded
         if not file:
             return render_template('index.html', message='No file uploaded.')
-        
-        unique_filename = str(uuid.uuid4())
-        filename = secure_filename(file.filename)
-        _, extension = os.path.splitext(filename)
-        img_filename = unique_filename + extension
+
+        img_filename = secure_filename(file.filename)
+        _, extension = os.path.splitext(img_filename)
+        # img_filename = filename + extension
         img_path = os.path.join('static/temp/', img_filename)
         file.save(img_path)
 
-        img = Image.open(img_path)
-        
         # Check if the uploaded file is a valid mammogram image
-        if img.format != 'PNG' and img.format != 'JPEG':
-            os.remove(img_path)  # Remove the uploaded file
-            return render_template('index.html', message='Invalid file format. Please upload a PNG or JPEG image.')
+        if extension.lower() not in ['.jpg', '.jpeg']:
+            return render_template('index.html', message='Invalid file format. Please upload a valid image.')
+        
+        img = Image.open(file)
+        
+        if img.size != (224, 224):
+            return render_template('index.html', message='Invalid image dimensions. Please upload an image with dimensions of 224x224 pixels.')
+        
+        if img.mode != 'RGB':
+            return render_template('index.html', message='Invalid color mode. Please upload an RGB image.')
+
         predictions = predict_cancer(img)
         pred_idx = np.argmax(list(predictions.values()))
 
@@ -99,7 +110,8 @@ def predict():
         if pred_idx in [1, 3, 5, 7]:
             if predictions[class_name[pred_idx]] >= 0.5:
                 vis_image = visualize_cancer(np.array(img), mask_3d)
-                vis_filename = unique_filename + '_vis.png'
+                name_without_extension = os.path.splitext(img_filename)[0]
+                vis_filename = name_without_extension + '_Heatmap.jpg'
                 vis_file_path = os.path.join('static/temp/', vis_filename)
                 with open(vis_file_path, 'wb') as f:
                     f.write(vis_image)

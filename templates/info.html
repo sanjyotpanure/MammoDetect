@@ -8,15 +8,19 @@
     <meta name="description" content="" />
     <meta name="author" content="" />
     <title>About Breast Cancer</title>
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='img/favicon.png') }}">
     <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
     <link href="static/styles.css" rel="stylesheet" />
     <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
 </head>
 
 <body class="sb-nav-fixed">
-    <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
+    <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark" style="height: 60px;">
         <!-- Navbar Brand-->
-        <a class="navbar-brand ps-3" href="{{ url_for('index') }}">MammoDetect</a>
+        <a class="navbar-brand ps-3" href="/">
+            <img src="{{ url_for('static', filename='img/logo.png') }}" style="height: 40px;" alt="MammoDetect Logo" class="site-logo">
+        </a>
         <!-- Sidebar Toggle-->
         <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i
                 class="fas fa-bars"></i></button>
@@ -31,17 +35,9 @@
         </form>
         <!-- Navbar-->
         <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown"
+            <li class="nav-item">
+                <a class="nav-link" href="#" role="button"
                     aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
-                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                    <li><a class="dropdown-item" href="#!">Settings</a></li>
-                    <li><a class="dropdown-item" href="#!">Activity Log</a></li>
-                    <li>
-                        <hr class="dropdown-divider" />
-                    </li>
-                    <li><a class="dropdown-item" href="#!">Logout</a></li>
-                </ul>
             </li>
         </ul>
     </nav>
@@ -50,15 +46,19 @@
             <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
                 <div class="sb-sidenav-menu">
                     <div class="nav">
-                        <div class="sb-sidenav-menu-heading">Core</div>
+                        <div class="sb-sidenav-menu-heading">Explore</div>
                         <a class="nav-link" href="{{ url_for('index') }}">
-                            <div class="sb-nav-link-icon"><i class="fas fa-microscope-alt"></i></div>
+                            <div class="sb-nav-link-icon"><i class="fas fa-search"></i></div>
                             Detect Cancer
                         </a>
                         <a class="nav-link" href="{{ url_for('info') }}">
                             <div class="sb-nav-link-icon"><i class="fas fa-ribbon"></i></div>
                             About Breast Cancer
                         </a>
+                        <a class="nav-link" href="{{ url_for('about') }}">
+                            <div class="sb-nav-link-icon"><img src="{{ url_for('static', filename='img/favicon.png') }}" style="height: 15px;" class="site-logo" alt="Logo Icon"></div>
+                            About MammoDetect
+                        </a>  
                     </div>
                 </div>
                 <div class="sb-sidenav-footer">
@@ -68,10 +68,10 @@
         <div id="layoutSidenav_content">
             <main>
                 <div class="container-fluid px-4">
-                    <h1 class="mt-4">Breast Cancer</h1>
+                    <h1 class="mt-4">Know Breast Cancer</h1>
                     <ol class="breadcrumb mb-4">
                         <li class="breadcrumb-item"><a href="{{ url_for('index') }}">Home</a></li>
-                        <li class="breadcrumb-item active">Breast Cancer</li>
+                        <li class="breadcrumb-item active">About Breast Cancer</li>
                     </ol>
                     <div class="row">
                         <div class="col-lg-9 px-5">
@@ -149,6 +149,35 @@
                                 </section> 
                             </div> 
 
+                            <div id="stages-of-breast-cancer">
+                                <section>
+                                    <h2>Stages of Breast Cancer</h2>
+                                    <p>Breast cancer is classified into different stages based on the size of the tumor, its spread to nearby lymph nodes, and whether it has metastasized (spread) to other parts of the body. Understanding the stages of breast cancer can help guide treatment decisions and determine the prognosis. Here are the main stages of breast cancer:</p>
+                                    <h5><b>1. Stage 0 (non-invasive breast cancer):</b></h5>
+                                        <ul>
+                                            <li> Stage 0 breast cancer is also known as ductal carcinoma in situ (DCIS).</li>
+                                            <li> In this stage, abnormal cells are confined to the milk ducts of the breast and have not invaded nearby tissues or spread to the lymph nodes or other parts of the body.</li>
+                                            <li> DCIS is considered a pre-cancerous condition because it has the potential to become invasive if left untreated.</li>
+                                            <li>Treatment options for stage 0 breast cancer typically involve surgery, such as lumpectomy or mastectomy, sometimes followed by radiation therapy.</li>
+                                        </ul>
+                                    <h5><b>2. Stage I-III (invasive breast cancer):</b></h5>
+                                        <ul>
+                                            <li>Stage I, II, and III breast cancers are considered invasive because they have spread beyond the milk ducts or lobules of the breast.</li>
+                                            <li>The size of the tumor and the extent of lymph node involvement determine the specific stage within this range.</li>   
+                                            <li>Treatment options for invasive breast cancer often include a combination of surgery, radiation therapy, chemotherapy, hormone therapy, and targeted therapy.</li>   
+                                            <li>The goal is to remove the tumor, eliminate any remaining cancer cells, and reduce the risk of recurrence.</li>   
+                                        </ul> 
+                                    <h5><b>3. Stage IV (metastatic breast cancer):</b></h5>
+                                        <ul>                            
+                                            <li>Stage IV breast cancer, also known as metastatic breast cancer, is characterized by the spread of cancer cells to distant organs or tissues, such as the lungs, liver, bones, or brain.</li>
+                                            <li>At this stage, the cancer is considered advanced and may be more difficult to treat.
+                                                Treatment for metastatic breast cancer focuses on managing symptoms, slowing the progression of the disease, and improving quality of life.</li>
+                                            <li>Various treatments, including systemic therapies like chemotherapy, hormone therapy, targeted therapy, and radiation therapy, may be used to control the cancer and alleviate symptoms.</li>
+                                        </ul>
+                                        <p>It's important to note that the specific treatment plan for each stage of breast cancer will vary depending on individual factors, such as tumor characteristics, overall health, and patient preferences. Consulting with a healthcare professional specializing in breast cancer care is crucial for developing a personalized treatment plan based on the specific stage and individual circumstances.</p>
+                                </section> 
+                            </div> 
+
                             <div id="treatment-options">
                                 <section>
                                     <h2>Treatment Options</h2>
@@ -181,11 +210,53 @@
                                         <p>It's important to note that the specific treatment plan for breast cancer will depend on various factors, such as the stage of the cancer, tumor characteristics, and individual patient preferences. The treatment options mentioned above are commonly used, but the actual treatment plan should be determined by a healthcare professional specializing in breast cancer care.</p>
                                 </section>
                             </div>
+                            <div id="prevention-and-screening">
+                                <section>
+                                    <h2>Prevention and Screening</h2>
+                                    <h5><b>1. Breast cancer screening guidelines:</b></h5>
+                                        <ul>
+                                            <li>Breast cancer screening involves regular examinations and tests to detect breast cancer in its early stages, even before symptoms are present.</li>
+                                            <li>Guidelines for breast cancer screening may vary depending on factors such as age, family history, and individual risk factors.</li>
+                                            <li>Common screening methods include mammography, clinical breast examination (performed by a healthcare professional), and breast self-examination.</li>
+                                            <li>It is important to follow the recommended screening guidelines and discuss the frequency and timing of screenings with a healthcare professional.</li>
+                                        </ul>
+                                    <h5><b>2. Lifestyle changes to reduce risk:</b></h5>
+                                    <p>Making certain lifestyle changes can help reduce the risk of developing breast cancer. These changes include:</p>
+                                        <ul>
+                                            <li>Maintaining a healthy weight: Obesity is associated with an increased risk of breast cancer, particularly after menopause. Engaging in regular physical activity and following a balanced diet can help maintain a healthy weight.</li>
+                                            <li>Limiting alcohol consumption: Research suggests that higher alcohol intake is linked to an increased risk of breast cancer. It is advisable to limit alcohol consumption or avoid it altogether.</li>
+                                            <li>Eating a nutritious diet: A diet rich in fruits, vegetables, whole grains, and lean proteins may help reduce the risk of breast cancer.</li>
+                                            <li>Breastfeeding: Women who breastfeed their babies may have a lower risk of developing breast cancer.</li>
+                                            <li>Avoiding or limiting hormone therapy: Prolonged use of hormone therapy, such as estrogen-progestin combinations for menopausal symptoms, may increase the risk of breast cancer. It's important to discuss the benefits and risks of hormone therapy with a healthcare professional.</li>
+                                        </ul> 
+                                    <h5><b>3. Risk-reducing medications:</b></h5>
+                                        <ul>                            
+                                            <li>For individuals at high risk of developing breast cancer, healthcare professionals may consider prescribing risk-reducing medications.</li>
+                                            <li>Selective estrogen receptor modulators (SERMs), such as tamoxifen and raloxifene, can help reduce the risk of developing breast cancer in certain high-risk individuals.</li>
+                                            <li>Aromatase inhibitors, such as exemestane and anastrozole, may also be used in postmenopausal women at high risk.</li>
+                                            <li>The decision to use risk-reducing medications should be made in consultation with a healthcare professional, considering the individual's overall health and risk profile.</li>
+                                        </ul>
+                                        <p>Remember, while these preventive measures can help reduce the risk of breast cancer, they do not guarantee complete prevention. Regular screening and early detection remain crucial for detecting breast cancer at its earliest stages, when it is most treatable. It is recommended to consult with a healthcare professional to discuss the best strategies for breast cancer prevention and screening based on individual circumstances.</p>
+                                </section>
+                            </div>
+                            <div id="conclusion">
+                                <section>
+                                    <h2>Conclusion</h2>
+                                    <p>In conclusion, breast cancer is a prevalent and potentially life-threatening disease, but there is hope. Breast cancer awareness and early detection play a critical role in saving lives. By increasing awareness about the importance of breast health and promoting regular screenings, we can make a significant impact in the fight against breast cancer.</p>
+                                    <p>It's important to remember that breast cancer can affect anyone, regardless of age or gender. Being proactive about your breast health and taking action can make a real difference. Don't wait for symptoms to appear. Schedule regular screenings and follow the recommended guidelines based on your age, family history, and risk factors.</p>
+                                    <p>Breast cancer screening, such as mammograms and clinical breast examinations, can detect breast cancer at its earliest stages, when it is most treatable. Early detection not only improves treatment outcomes but can also reduce the need for more invasive and aggressive treatments.</p>
+                                    <p>We encourage you to take charge of your breast health and motivate your loved ones to do the same. Spread the word about breast cancer awareness, the importance of self-examinations, and regular screenings. Together, we can make a significant impact in early detection, treatment, and ultimately, saving lives.</p>
+                                    <p>Remember, knowledge is power. Stay informed, stay proactive, and together, let's continue to fight against breast cancer.</p>
+                                </section>
+                            </div>
                         </div>
                         <div class="col-lg-3">
-                            <div class="card position-fixed">
+                            <div class=" position-fixed">
+                                <img src="{{ url_for('static', filename='img/logoBlack.png') }}" style="width: 250px; margin-top: -90px;" alt="Logo" class="logo-image">
+                            </div>
+                            <div class="card position-fixed" style="margin-top: 10px;">
                                 <div class="card-header">
-                                    <h4 class="mt-4">Contents</h4>
+                                    <h4>Contents</h4>
                                 </div>
                                 <div class="card-body">
                                     <nav class="nav flex-column">
@@ -195,7 +266,6 @@
                                         <a class="nav-link" href="javascript:void(0);" onclick="scrollToSection('diagnosis')">Diagnosis</a>
                                         <a class="nav-link" href="javascript:void(0);" onclick="scrollToSection('stages-of-breast-cancer')">Stages of Breast Cancer</a>
                                         <a class="nav-link" href="javascript:void(0);" onclick="scrollToSection('treatment-options')">Treatment Options</a>
-                                        <a class="nav-link" href="javascript:void(0);" onclick="scrollToSection('coping-with-breast-cancer')">Coping with Breast Cancer</a>
                                         <a class="nav-link" href="javascript:void(0);" onclick="scrollToSection('prevention-and-screening')">Prevention and Screening</a>
                                         <a class="nav-link" href="javascript:void(0);" onclick="scrollToSection('conclusion')">Conclusion</a>
                                     </nav>
@@ -209,20 +279,25 @@
             <footer class="py-3 bg-light mt-auto">
                 <div class="container-fluid px-4">
                     <div class="d-flex align-items-center justify-content-center small">
-                        <div class="text-muted">Copyright &copy;   Website 2023</div>
-                    </div>
+                        <div class="text-muted"> Copyright
+                            <a class="navbar-brand ps-3" href="/">
+                                <img src="{{ url_for('static', filename='img/logoBlack.png') }}" style="height: 20px;" alt="MammoDetect Logo" class="site-logo">
+                            </a>
+                            <span>&copy; 2023</span>
+                        </div>
+                    </div>                    
                 </div>
             </footer>
         </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
         crossorigin="anonymous"></script>
-    <script src="../static/scripts.js"></script>
+    <script src="{{ url_for('static', filename='scripts.js') }}"></script>
     <script>
         function scrollToSection(sectionId) {
             const section = document.getElementById(sectionId);
             if (section) {
-                const offset = 80; // Adjust the offset value as needed
+                const offset = 70; // Adjust the offset value as needed
                 const sectionPosition = section.offsetTop - offset;
                 window.scrollTo({
                     top: sectionPosition,
